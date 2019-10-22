@@ -7,29 +7,35 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.seuic.uhf.UHFService;
+import com.seidor.uhfrfid.InventoryFragement;
 
 /**
  * This class echoes a string called from JavaScript.
  */
 public class PluginAutoid9U extends CordovaPlugin {
 	private CallbackContext receiveScanCallback;
-	static private UHFClient instance = null;
+	static private UHFService instance = null;
+    static private InventoryFragement inventoryFragement;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
+        JSONObject my_obj = new JSONObject();
+        inventoryFragement = InventoryFragement.getInstance();
+        if(action.equals("singleTag")) {
+            my_obj = inventoryFragement.singleTag();
+            callbackContext.success(my_obj);
+            return true;
+        } else if(action.equals("open")) {
+            my_obj.put("result",inventoryFragement.open());
+            callbackContext.success(my_obj);
+            return true;
+        } else if(action.equals("close")) {
+            inventoryFragement.close();
+            my_obj.put("result", "true");
+            callbackContext.success(my_obj);
             return true;
         }
         return false;
     }
 
-    private void coolMethod(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message + "Teste deu bom em !!!");
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
-    }
 }

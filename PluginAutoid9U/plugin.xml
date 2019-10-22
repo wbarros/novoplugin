@@ -4,21 +4,22 @@
     id="cordova-plugin-autoid"
     version="0.0.1">
    <name>PluginAutoid9U</name>
-   <js-module name="plugin autoid9u" src="www/PluginAutoid9U.js">
+   <js-module  src="www/plugin.js" name="plugin">
       <clobbers target="PluginAutoid9U" />
    </js-module>
    <platform name="android">
-      <config-file parent="/*" target="res/xml/config.xml">
+      <config-file target="res/xml/config.xml" parent="/*">
          <feature name="PluginAutoid9U">
             <param name="android-package" value="com.seidor.uhfrfid.PluginAutoid9U" />
          </feature>
       </config-file>
 
-      <config-file parent="/*" target="AndroidManifest.xml" />
+      <config-file target="AndroidManifest.xml" parent="/*" />
 
-      <source-file src="src/android/com/seidor/uhfrfid/PluginAutoid9U.java" target-dir="src/com/seidor/uhfrfid/PluginAutoid9U" />
-      <source-file src="src/android/com/seidor/uhfrfid/InventoryFragement.java" target-dir="src/com/seidor/uhfrfid/InventoryFragement" />
-      <source-file src="src/android/com/seidor/uhfrfid/BaseUtil.java" target-dir="src/com/seidor/uhfrfid/BaseUtil" />
+      <source-file src="src/android/com/seidor/uhfrfid/PluginAutoid9U.java" target-dir="src/com/seidor/uhfrfid/" />
+      <source-file src="src/android/com/seidor/uhfrfid/InventoryFragement.java" target-dir="src/com/seidor/uhfrfid/" />
+      <source-file src="src/android/com/seidor/uhfrfid/BaseUtil.java" target-dir="src/com/seidor/uhfrfid/" />
       <source-file src="src/android/uhf.jar" target-dir="libs" />
+      <!-- <lib-file src="src/android/uhf.jar" /> -->
    </platform>
 </plugin>
