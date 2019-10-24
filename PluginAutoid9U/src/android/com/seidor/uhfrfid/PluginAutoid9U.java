@@ -14,8 +14,7 @@ import com.seidor.uhfrfid.InventoryFragement;
  */
 public class PluginAutoid9U extends CordovaPlugin {
 	private CallbackContext receiveScanCallback;
-	static private UHFService instance = null;
-    static private InventoryFragement inventoryFragement;
+    	private InventoryFragement inventoryFragement = null;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
